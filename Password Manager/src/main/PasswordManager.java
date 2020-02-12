@@ -15,6 +15,7 @@ public class PasswordManager {
         System.out.println("4. Search");
         System.out.println("5. View a password");
 
+        
         String output;
         Scanner scan = new Scanner(System.in);
         int input = scan.nextInt();
