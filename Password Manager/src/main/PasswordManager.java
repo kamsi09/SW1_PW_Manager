@@ -62,6 +62,8 @@ public class PasswordManager {
                     // Use scanner to take input
                     System.out.println("Enter website (Ex. google.com): ");
                     // call method to delete key from HashMap
+                    delete(passwords);
+
                     break;
                 }
 
@@ -154,4 +156,17 @@ public class PasswordManager {
         }
         //sc.close();
     }
+    //delete method
+    public static void delete(HashMap<String, ArrayList<String>> passwords ){
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine().toLowerCase();
+
+        if(passwords.containsKey(input)){
+            passwords.remove(input);
+        }else{
+            System.out.println("The website input could not be found or does not exist");
+            System.out.println(" ");
+        }
+    }
+
 }
