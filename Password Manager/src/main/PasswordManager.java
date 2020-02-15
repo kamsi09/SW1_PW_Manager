@@ -54,6 +54,7 @@ public class PasswordManager {
                     // Use scanner to take input
                     System.out.println("Enter username: ");
                     // call method to put inputs to HashMap
+                    update(passwords);
                     break;
                 }
 
@@ -168,5 +169,35 @@ public class PasswordManager {
             System.out.println(" ");
         }
     }
+    //Asks the user for a website then updates the cfredentials
+    public static void update(HashMap<String,ArrayList<String>> pword)
+    {
+        System.out.println("Which website's info do you want to update?\n");
+        Scanner scan = new Scanner(System.in);
+        String input = scan.nextLine().toLowerCase();
 
+        //if the key is not found print an error message and return
+        if(!(pword.containsKey(input)))
+        {
+            System.out.println("There are no credentials for this website.");
+        }
+        else
+        {
+            System.out.println("Website:" + input);
+            System.out.println("Current Username:" + pword.get(input).get(0));
+            System.out.println("Current Password:" + pword.get(input).get(1) +"\n");
+
+            System.out.println("New Username> ");
+            String input_user = scan.nextLine();
+
+            System.out.println("New Password> ");
+            String input_pass = scan.nextLine();
+
+            ArrayList<String> credentials = new ArrayList<>(Arrays.asList(input_user, input_pass));
+
+            //String[] credentials = {input_user, input_pass};
+            pword.replace(input, credentials);
+            System.out.println("Credentials changed");
+        }
+    }
 }
