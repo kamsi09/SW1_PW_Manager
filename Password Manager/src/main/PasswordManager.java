@@ -35,13 +35,18 @@ public class PasswordManager {
             switch (input) {
                 // Add Method
                 case 1: {
-                    // Use scanner to take input
-                    System.out.println("Enter website (Ex. google.com): ");
-                    // Use scanner to take input
-                    System.out.println("Enter username: ");
-                    // Use scanner to take input
-                    System.out.println("Enter username: ");
                     // call method to add inputs to HashMap
+                    AddEntry(passwords);
+                    System.out.println("Credentials added!");
+                    System.out.println("Return to Main Menu(y) or Exit(n)");
+                    Scanner sc = new Scanner(System.in);
+                    String back = sc.next();
+
+                    if (back.toLowerCase().equals("y")) {
+                        break;
+                    } else if (back.toLowerCase().equals("n")) {
+                        loopEnd = 0;
+                    }
                     break;
                 }
 
@@ -106,7 +111,7 @@ public class PasswordManager {
 
                 //View all method
                 case 5: {
-                    getAllPasswords(passwords);
+                    getPasswords(passwords);
                     System.out.println("Return to Main Menu(y) | Exit(n)");
                     Scanner sc = new Scanner(System.in);
                     String back = sc.next();
@@ -133,7 +138,7 @@ public class PasswordManager {
         while (loopEnd!=0);
     }
 
-    static void getAllPasswords(HashMap<String, ArrayList<String>> passwords){
+    static void getPasswords(HashMap<String, ArrayList<String>> passwords){
         if (passwords.isEmpty()){
             System.out.println("No Passwords Yet!");
         }
@@ -210,4 +215,19 @@ public class PasswordManager {
             System.out.println("Credentials changed");
         }
     }
-}
+
+    public static void AddEntry(HashMap<String, ArrayList<String>> passwords) {
+        // Use scanner to take input
+        System.out.println("Enter website (Ex. google.com): ");
+        Scanner sc1 = new Scanner(System.in);
+        String web = sc1.next();
+        // Use scanner to take input
+        System.out.println("Enter username: ");
+        Scanner sc2 = new Scanner(System.in);
+        String usnm = sc2.next();
+        // Use scanner to take input
+        System.out.println("Enter password: ");
+        Scanner sc3 = new Scanner(System.in);
+        String pass = sc3.next();
+        passwords.put(new String(web), new ArrayList<>(Arrays.asList(usnm, pass)));
+    }
