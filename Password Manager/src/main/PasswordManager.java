@@ -18,7 +18,7 @@ public class PasswordManager {
 
 
         //Begin Loop
-        int loopEnd=1;
+        int loopEnd = 1;
         do {
             // Main Menu Prompt
             System.out.println("Welcome to The Password Manager");
