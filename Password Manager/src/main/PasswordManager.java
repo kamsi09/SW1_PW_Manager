@@ -49,10 +49,6 @@ public class PasswordManager {
                 case 2: {
                     // Use scanner to take input
                     System.out.println("Enter website (Ex. google.com): ");
-                    // Use scanner to take input
-                    System.out.println("Enter username: ");
-                    // Use scanner to take input
-                    System.out.println("Enter username: ");
                     // call method to put inputs to HashMap
                     update(passwords);
                     break;
@@ -169,10 +165,9 @@ public class PasswordManager {
             System.out.println(" ");
         }
     }
-    //Asks the user for a website then updates the cfredentials
+    //Asks the user for a website then updates the credentials
     public static void update(HashMap<String,ArrayList<String>> pword)
     {
-        System.out.println("Which website's info do you want to update?\n");
         Scanner scan = new Scanner(System.in);
         String input = scan.nextLine().toLowerCase();
 
