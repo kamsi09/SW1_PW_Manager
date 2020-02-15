@@ -85,7 +85,7 @@ public class PasswordManager {
 
                 //Search Method
                 case 4: {
-                    if (passwords.isEmpty()){
+                    if (passwords.isEmpty()) {
                         System.out.println("Your password manager entry list is currently empty\nConsider adding entries by selecting the 1st option in the home menu.");
                         System.out.println("...\n");
                         try {
@@ -93,8 +93,7 @@ public class PasswordManager {
                         } catch (Exception e) {
                             System.out.println(e);
                         }
-                    }
-                    else{
+                    } else {
                         search(passwords);
                         System.out.println("Return to Main Menu(y) | Exit(n)");
                         Scanner sc = new Scanner(System.in);
@@ -135,14 +134,13 @@ public class PasswordManager {
 
         }
         // End Loop
-        while (loopEnd!=0);
+        while (loopEnd != 0);
     }
 
-    static void getPasswords(HashMap<String, ArrayList<String>> passwords){
-        if (passwords.isEmpty()){
+    static void getPasswords(HashMap<String, ArrayList<String>> passwords) {
+        if (passwords.isEmpty()) {
             System.out.println("No Passwords Yet!");
-        }
-        else {
+        } else {
             for (String s : passwords.keySet()) {
                 System.out.println("-----------------------------------------------");
                 System.out.println("Website: " + s);
@@ -152,14 +150,13 @@ public class PasswordManager {
         }
     }
 
-    public static void search(HashMap<String, ArrayList<String>> pword){
+    public static void search(HashMap<String, ArrayList<String>> pword) {
         System.out.println("Enter the name of the site you are looking the credentials of");
         Scanner sc = new Scanner(System.in);
         String site = sc.nextLine().toLowerCase();
-        if(!pword.containsKey(site)){
+        if (!pword.containsKey(site)) {
             System.out.println("There is no entry for " + site);
-        }
-        else{
+        } else {
             System.out.println(site);
             System.out.println("Username: " + pword.get(site).get(0));
             System.out.println("Password: " + pword.get(site).get(1));
@@ -172,36 +169,34 @@ public class PasswordManager {
         }
         //sc.close();
     }
+
     //delete method
-    public static void delete(HashMap<String, ArrayList<String>> passwords ){
+    public static void delete(HashMap<String, ArrayList<String>> passwords) {
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine().toLowerCase();
 
-        if(passwords.containsKey(input)){
+        if (passwords.containsKey(input)) {
             passwords.remove(input);
             System.out.println(input + " has been removed!");
-        }else{
+        } else {
             System.out.println("The website input could not be found or does not exist");
 
         }
 
     }
+
     //Asks the user for a website then updates the credentials
-    public static void update(HashMap<String,ArrayList<String>> pword)
-    {
+    public static void update(HashMap<String, ArrayList<String>> pword) {
         Scanner scan = new Scanner(System.in);
         String input = scan.nextLine().toLowerCase();
 
         //if the key is not found print an error message and return
-        if(!(pword.containsKey(input)))
-        {
+        if (!(pword.containsKey(input))) {
             System.out.println("There are no credentials for this website.");
-        }
-        else
-        {
+        } else {
             System.out.println("Website:" + input);
             System.out.println("Current Username:" + pword.get(input).get(0));
-            System.out.println("Current Password:" + pword.get(input).get(1) +"\n");
+            System.out.println("Current Password:" + pword.get(input).get(1) + "\n");
 
             System.out.println("New Username> ");
             String input_user = scan.nextLine();
@@ -231,3 +226,5 @@ public class PasswordManager {
         String pass = sc3.next();
         passwords.put(new String(web), new ArrayList<>(Arrays.asList(usnm, pass)));
     }
+}
+
