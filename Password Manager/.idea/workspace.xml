@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0285e58-2b24-4197-a8f2-22fbb7e0dee3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Password Manager/main/PasswordManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Password Manager/main/PasswordManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/PasswordManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/PasswordManager.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,7 +88,7 @@
       <workItem from="1581475182407" duration="165000" />
       <workItem from="1581475383774" duration="270000" />
       <workItem from="1581537998046" duration="3161000" />
-      <workItem from="1581721299946" duration="4429000" />
+      <workItem from="1581721299946" duration="6398000" />
     </task>
     <servers />
   </component>

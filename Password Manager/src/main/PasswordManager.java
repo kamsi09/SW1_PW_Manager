@@ -47,20 +47,34 @@ public class PasswordManager {
 
                 // Update Method
                 case 2: {
-                    // Use scanner to take input
                     System.out.println("Enter website (Ex. google.com): ");
-                    // call method to put inputs to HashMap
                     update(passwords);
+                    System.out.println("Return to Main Menu(y) | Exit(n)");
+                    Scanner sc = new Scanner(System.in);
+                    String back = sc.next();
+
+                    if (back.toLowerCase().equals("y")) {
+                        break;
+                    } else if (back.toLowerCase().equals("n")) {
+                        loopEnd = 0;
+                    }
                     break;
                 }
 
                 // Delete Method
                 case 3: {
-                    // Use scanner to take input
                     System.out.println("Enter website (Ex. google.com): ");
-                    // call method to delete key from HashMap
                     delete(passwords);
 
+                    System.out.println("Return to Main Menu(y) | Exit(n)");
+                    Scanner sc = new Scanner(System.in);
+                    String back = sc.next();
+
+                    if (back.toLowerCase().equals("y")) {
+                        break;
+                    } else if (back.toLowerCase().equals("n")) {
+                        loopEnd = 0;
+                    }
                     break;
                 }
 
@@ -77,7 +91,7 @@ public class PasswordManager {
                     }
                     else{
                         search(passwords);
-                        System.out.println("Return to Main Menu(y) or Exit(n)");
+                        System.out.println("Return to Main Menu(y) | Exit(n)");
                         Scanner sc = new Scanner(System.in);
                         String back = sc.next();
 
@@ -93,7 +107,7 @@ public class PasswordManager {
                 //View all method
                 case 5: {
                     getAllPasswords(passwords);
-                    System.out.println("Return to Main Menu(y) or Exit(n)");
+                    System.out.println("Return to Main Menu(y) | Exit(n)");
                     Scanner sc = new Scanner(System.in);
                     String back = sc.next();
 
@@ -160,10 +174,12 @@ public class PasswordManager {
 
         if(passwords.containsKey(input)){
             passwords.remove(input);
+            System.out.println(input + " has been removed!");
         }else{
             System.out.println("The website input could not be found or does not exist");
-            System.out.println(" ");
+
         }
+
     }
     //Asks the user for a website then updates the credentials
     public static void update(HashMap<String,ArrayList<String>> pword)
@@ -190,7 +206,6 @@ public class PasswordManager {
 
             ArrayList<String> credentials = new ArrayList<>(Arrays.asList(input_user, input_pass));
 
-            //String[] credentials = {input_user, input_pass};
             pword.replace(input, credentials);
             System.out.println("Credentials changed");
         }
