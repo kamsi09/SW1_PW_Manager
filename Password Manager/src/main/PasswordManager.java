@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class PasswordManager {
     public static void main(String[] args) {
         // Set mock data
+        CredentialFactory credentialFactory = new CredentialFactory();
         HashMap<String, ArrayList<String>> passwords = new HashMap<>();
         passwords.put(new String("google.com"), new ArrayList<>(Arrays.asList("soduche", "password123456")));
         passwords.put(new String("yahoo.com"), new ArrayList<>(Arrays.asList("gigglefairy123", "password123456")));
@@ -224,7 +225,8 @@ public class PasswordManager {
         System.out.println("Enter password: ");
         Scanner sc3 = new Scanner(System.in);
         String pass = sc3.next();
-        passwords.put(new String(web), new ArrayList<>(Arrays.asList(usnm, pass)));
+        Credential credential = CredentialFactory.createCredential(web, usnm, pass);
+        passwords.put(credential.getWebsite(), credential.getCredentials());
     }
 }
 
