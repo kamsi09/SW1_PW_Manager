@@ -1,4 +1,4 @@
-package main;
+package main.Actions;
 
 import java.util.ArrayList;
 

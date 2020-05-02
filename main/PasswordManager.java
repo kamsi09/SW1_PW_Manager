@@ -1,6 +1,6 @@
 package main;
 
-import main.Actions.ViewAll;
+import main.Actions.*;
 
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -40,7 +40,8 @@ public class PasswordManager {
                 // Add Method
                 case 1: {
                     // call method to add inputs to HashMap
-                    AddEntry(passwords);
+                    Add add = Add.getInstance();
+                    add.updatePasswords(passwords);
                     System.out.println("Credentials added!");
                     System.out.println("Return to Main Menu(y) or Exit(n)");
                     Scanner sc = new Scanner(System.in);
@@ -57,7 +58,8 @@ public class PasswordManager {
                 // Update Method
                 case 2: {
                     System.out.println("Enter website (Ex. google.com): ");
-                    update(passwords);
+                    Update update = Update.getInstance();
+                    update.updatePasswords(passwords);
                     System.out.println("Return to Main Menu(y) | Exit(n)");
                     Scanner sc = new Scanner(System.in);
                     String back = sc.next();
@@ -73,7 +75,8 @@ public class PasswordManager {
                 // Delete Method
                 case 3: {
                     System.out.println("Enter website (Ex. google.com): ");
-                    delete(passwords);
+                    Delete delete = Delete.getInstance();
+                    delete.deletePasswords(passwords);
 
                     System.out.println("Return to Main Menu(y) | Exit(n)");
                     Scanner sc = new Scanner(System.in);
@@ -98,7 +101,8 @@ public class PasswordManager {
                             System.out.println(e);
                         }
                     } else {
-                        search(passwords);
+                        Search search = Search.getInstance();
+                        search.searchPasswords(passwords);
                         System.out.println("Return to Main Menu(y) | Exit(n)");
                         Scanner sc = new Scanner(System.in);
                         String back = sc.next();
@@ -114,8 +118,8 @@ public class PasswordManager {
 
                 //View all method
                 case 5: {
-                    ViewAll object = ViewAll.getInstance();
-                    object.showPasswords(passwords);
+                    ViewAll viewAll = ViewAll.getInstance();
+                    viewAll.showPasswords(passwords);
                     System.out.println("Return to Main Menu(y) | Exit(n)");
                     Scanner sc = new Scanner(System.in);
                     String back = sc.next();
@@ -142,82 +146,5 @@ public class PasswordManager {
         while (loopEnd != 0);
     }
 
-    public static void search(HashMap<String, ArrayList<String>> pword) {
-        System.out.println("Enter the name of the site you are looking the credentials of");
-        Scanner sc = new Scanner(System.in);
-        String site = sc.nextLine().toLowerCase();
-        if (!pword.containsKey(site)) {
-            System.out.println("There is no entry for " + site);
-        } else {
-            System.out.println(site);
-            System.out.println("Username: " + pword.get(site).get(0));
-            System.out.println("Password: " + pword.get(site).get(1));
-        }
-        System.out.println("...\n");
-        try {
-            Thread.sleep(1500);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        //sc.close();
-    }
-
-    //delete method
-    public static void delete(HashMap<String, ArrayList<String>> passwords) {
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine().toLowerCase();
-
-        if (passwords.containsKey(input)) {
-            passwords.remove(input);
-            System.out.println(input + " has been removed!");
-        } else {
-            System.out.println("The website input could not be found or does not exist");
-
-        }
-
-    }
-
-    //Asks the user for a website then updates the credentials
-    public static void update(HashMap<String, ArrayList<String>> pword) {
-        Scanner scan = new Scanner(System.in);
-        String input = scan.nextLine().toLowerCase();
-
-        //if the key is not found print an error message and return
-        if (!(pword.containsKey(input))) {
-            System.out.println("There are no credentials for this website.");
-        } else {
-            System.out.println("Website:" + input);
-            System.out.println("Current Username:" + pword.get(input).get(0));
-            System.out.println("Current Password:" + pword.get(input).get(1) + "\n");
-
-            System.out.println("New Username> ");
-            String input_user = scan.nextLine();
-
-            System.out.println("New Password> ");
-            String input_pass = scan.nextLine();
-
-            ArrayList<String> credentials = new ArrayList<>(Arrays.asList(input_user, input_pass));
-
-            pword.replace(input, credentials);
-            System.out.println("Credentials changed");
-        }
-    }
-
-    public static void AddEntry(HashMap<String, ArrayList<String>> passwords) {
-        // Use scanner to take input
-        System.out.println("Enter website (Ex. google.com): ");
-        Scanner sc1 = new Scanner(System.in);
-        String web = sc1.next();
-        // Use scanner to take input
-        System.out.println("Enter username: ");
-        Scanner sc2 = new Scanner(System.in);
-        String usnm = sc2.next();
-        // Use scanner to take input
-        System.out.println("Enter password: ");
-        Scanner sc3 = new Scanner(System.in);
-        String pass = sc3.next();
-        Credential credential = CredentialFactory.createCredential(web, usnm, pass);
-        passwords.put(credential.getWebsite(), credential.getCredentials());
-    }
 }
 
