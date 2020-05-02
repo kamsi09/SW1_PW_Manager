@@ -1,5 +1,7 @@
 package main;
 
+import main.Actions.ViewAll;
+
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,6 +18,7 @@ public class PasswordManager {
         passwords.put(new String("facebook.com"), new ArrayList<>(Arrays.asList("username321", "password123456")));
         passwords.put(new String("raiderlink.ttu.edu"), new ArrayList<>(Arrays.asList("notpassword123", "password123456")));
         passwords.put(new String("google.com"), new ArrayList<>(Arrays.asList("help123", "password123456")));
+
 
 
         //Begin Loop
@@ -111,7 +114,8 @@ public class PasswordManager {
 
                 //View all method
                 case 5: {
-                    getPasswords(passwords);
+                    ViewAll object = ViewAll.getInstance();
+                    object.showPasswords(passwords);
                     System.out.println("Return to Main Menu(y) | Exit(n)");
                     Scanner sc = new Scanner(System.in);
                     String back = sc.next();
@@ -139,16 +143,7 @@ public class PasswordManager {
     }
 
     static void getPasswords(HashMap<String, ArrayList<String>> passwords) {
-        if (passwords.isEmpty()) {
-            System.out.println("No Passwords Yet!");
-        } else {
-            for (String s : passwords.keySet()) {
-                System.out.println("-----------------------------------------------");
-                System.out.println("Website: " + s);
-                System.out.println("Username: " + passwords.get(s).get(0));
-                System.out.println("Password: " + passwords.get(s).get(1));
-            }
-        }
+
     }
 
     public static void search(HashMap<String, ArrayList<String>> pword) {
