@@ -142,10 +142,6 @@ public class PasswordManager {
         while (loopEnd != 0);
     }
 
-    static void getPasswords(HashMap<String, ArrayList<String>> passwords) {
-
-    }
-
     public static void search(HashMap<String, ArrayList<String>> pword) {
         System.out.println("Enter the name of the site you are looking the credentials of");
         Scanner sc = new Scanner(System.in);
